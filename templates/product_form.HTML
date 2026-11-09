@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rwanda Retail Sales</title>
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='submit.css') }}">
+    
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Rwanda Retail Sales</h2>
+
+    <p>Enter a new sales transaction below.</p>
+
+    <form method="POST" action="/submit">
+
+        <label>Product Name</label>
+        <input type="text" name="product_name" required>
+
+        <label>Quantity</label>
+        <input type="number" name="quantity" min="1" required>
+
+        <label>Unit Price (RWF)</label>
+        <input type="number" name="unit_price" min="1" required>
+
+        <label>Payment Method</label>
+        <select name="payment_method" required>
+            <option value="Mobile Money">Mobile Money</option>
+            <option value="Cash">Cash</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+        </select>
+
+        <label>District</label>
+        <select name="district" required>
+            <option value="Gasabo">Gasabo</option>
+            <option value="Kicukiro">Kicukiro</option>
+            <option value="Nyarugenge">Nyarugenge</option>
+            
+        </select>
+
+        <button class="btn-green" type="submit">Save Sale</button>
+        <button class="btn-blue" type="submit">Cancel</button>
+
+        
+    </form>
+
+    {% if message %}
+<div class="popup-overlay" id="successPopup">
+    <div class="popup-box">
+        <div class="success-icon">✓</div>
+        <h2>Success!</h2>
+        <p>{{ message }}</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+{% endif %}
+
+<script>
+    function closePopup() {
+        document.getElementById("successPopup").style.display = "none";
+    }
+</script>
+  
+</div>
+
+</body>
+</html>
+

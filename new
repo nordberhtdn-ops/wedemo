@@ -1,0 +1,14 @@
+mongoconnect= MongoClient(mongodb['link'])
+cluter = mongoconnect['Pythontest']
+user = cluter['Product']
+
+data = {
+    "product Name" : "cocacola",
+    "Quantity" : "23",
+    "unty Price" : "1200",
+    "Payment Method" : "Mobile money",
+    "district" : "Nyarugenge"
+}
+
+user.insert_one(data)
+print("Submission was done successfuly")
